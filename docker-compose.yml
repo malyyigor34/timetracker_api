@@ -15,7 +15,7 @@ services:
     ports:
       - "3906:3306"
     volumes:
-      - ./data_db/:/config
+      - /data/screen_saver/data_db/:/config
     restart: always
   api:
     build: .
@@ -28,7 +28,7 @@ services:
     ports:
       - "7080:8000"
     volumes:
-      - ./data_img/:/home/apps/timetracker_api/media
+      - /data/screen_saver/data_img/:/home/apps/timetracker_api/media
     restart: always
     depends_on:
       - mysql

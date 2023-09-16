@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'savfasfmksaflKLMdl;,ml:@P3m1vb^3q6oz)xl73f=ozka%&udmoz+q7=0)ke40)@8#u=5^$j'
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['screensaver.1213213.xyz', '192.168.0.107']
 
 
 INSTALLED_APPS = [
@@ -54,8 +54,12 @@ WSGI_APPLICATION = 'timetracker_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'api',
+        'USER': 'root',
+        'PASSWORD': '343877',
+        'HOST': 'mysql',
+        'PORT': '3306',
     }
 }
 

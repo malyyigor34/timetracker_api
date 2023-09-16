@@ -1,0 +1,34 @@
+---
+version: "2.1"
+services:
+  mysql:
+    image: lscr.io/linuxserver/mariadb:latest
+    container_name: db
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - MYSQL_ROOT_PASSWORD=343877
+      - MYSQL_DATABASE=api
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=343877
+    ports:
+      - "3906:3306"
+    volumes:
+      - ./data_db/:/config
+    restart: always
+  api:
+    build: .
+    image: api
+    container_name: api
+    environment:
+      - DJANGO_SUPERUSER_PASSWORD=343877
+      - DJANGO_SUPERUSER_EMAIL=malyyigor34@gmail.com
+      - DJANGO_SUPERUSER_USERNAME=igor
+    ports:
+      - "7080:8000"
+    volumes:
+      - ./data_img/:/home/apps/timetracker_api/media
+    restart: always
+    depends_on:
+      - mysql
